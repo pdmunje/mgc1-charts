@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Stock Screener – TradingView Widget</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+    header {
+      background: #1a1a1a;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+    }
+    main {
+      flex: 1;
+      padding: 0.5rem;
+    }
+    .tradingview-widget-container {
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Stock Screener</h1>
+  </header>
+  <main>
+    <!-- TradingView Stock Screener Widget BEGIN -->
+    <div class="tradingview-widget-container">
+      <div id="tradingview_screener"></div>
+      <script type="text/javascript">
+      new TradingView.ScreenerWidget({
+        "container_id": "tradingview_screener",
+        "width": "100%",
+        "height": "100%",
+        "defaultColumn": "overview",
+        "locale": "en",
+        "colorTheme": "light",
+        "screens": ["most_capitalized", "gainers", "losers"],
+        "filter": [
+          { "left": "exchange", "operation": "in_range", "right": ["NYSE", "NASDAQ"] },
+          { "left": "sector",   "operation": "equal",    "right": "Technology" }
+        ],
+        "sortColumn": "market_cap_basic",
+        "sortOrder": "desc"
+      });
+      </script>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js"></script>
+    </div>
+    <!-- TradingView Stock Screener Widget END -->
+  </main>
+</body>
+</html>
